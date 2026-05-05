@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Como Identificar Acesso Não Autorizado com Computação Forense</title>
+    <meta name="description" content="Aprenda como identificar acessos não autorizados com computação forense. Técnicas de análise de logs, timeline forense e evidências digitais com validade jurídica.">
+    <meta name="author" content="Rodrigo A. Paiva">
+    <link rel="canonical" href="https://rodrigoperito.vercel.app/artigos/acesso-nao-autorizado.html">
+    <meta property="og:title" content="Como Identificar Acesso Não Autorizado com Computação Forense">
+    <meta property="og:description" content="Técnicas de análise de logs, timeline forense e evidências digitais">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://rodrigoperito.vercel.app/img/preview.jpg">
+    <link rel="stylesheet" href="artigo.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<nav class="nav">
+    <div class="container nav-container">
+        <a href="../index.html" class="nav-logo">RODRIGO A. PAIVA</a>
+        <button class="nav-toggle" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../sobre.html">Sobre</a></li>
+            <li><a href="../servicos.html">Serviços</a></li>
+            <li><a href="../artigos.html" class="active">Artigos</a></li>
+            <li><a href="../contato.html">Contato</a></li>
+        </ul>
+    </div>
+</nav>
+
+<article class="article-page">
+    <div class="container">
+        <div class="article-header">
+            <span class="category-badge"><i class="fas fa-shield-alt"></i> Segurança Cibernética</span>
+            <h1>Como Identificar Acesso Não Autorizado com Computação Forense</h1>
+            <div class="article-meta">
+                <span class="article-date"><i class="far fa-calendar-alt"></i> 15 de Janeiro, 2026</span>
+                <span class="article-stats"><i class="far fa-clock"></i> 7 min de leitura</span>
+            </div>
+        </div>
+
+        <div class="article-body">
+            <p class="article-intro">
+                A identificação de acessos não autorizados é uma das principais demandas da perícia digital, respaldada pelo art. 154-A do Código Penal (Lei Carolina Dieckmann). Em ambientes corporativos e judiciais, detectar uma invasão exige análise técnica rigorosa, correlação de eventos e preservação da cadeia de custódia (arts. 158-A a 158-F do CPP).
+            </p>
+
+            <h2>O que é acesso não autorizado?</h2>
+            <p>
+                Acesso não autorizado consiste na violação de mecanismo de segurança de sistema informatizado sem consentimento do titular. Caracteriza-se por qualquer operação de leitura, escrita, execução ou modificação de ativos digitais realizada por entidade (usuário, processo ou serviço) sem privilégios concedidos via <strong>ACL (Access Control List)</strong>, <strong>RBAC (Role-Based Access Control)</strong> ou políticas de <strong>MFA (Multi-Factor Authentication)</strong>. Juridicamente, tipifica o crime do art. 154-A do CP, com pena de 3 meses a 1 ano.
+            </p>
+
+            <h2>Como identificar acessos não autorizados</h2>
+
+            <h3>1. Análise de Logs</h3>
+            <p>
+                A análise forense de logs é o principal método para identificar invasões. Registros de autenticação (auth.log no Linux, Security Event Log no Windows com Event ID 4624/4625), eventos do sistema e tráfego de rede revelam padrões suspeitos. Utiliza-se correlação via <strong>SIEM (Security Information and Event Management)</strong> com regras como detecção de múltiplas falhas de login (brute-force).
+            </p>
+
+            <h3>2. Correlação Temporal</h3>
+            <p>
+                A criação de uma timeline forense (baseada em hashes temporais MAC – Modified, Accessed, Created) permite reconstruir o incidente sob o princípio da locução temporal. Utilizam-se ferramentas como Plaso (log2timeline) e Super Timelines para ordenar eventos nanossegundo a nanossegundo.
+            </p>
+
+            <h3>3. Identificação de Padrões Anômalos</h3>
+            <p>
+                Tentativas repetidas de login (excedendo threshold de 5 falhas/60s), acessos fora de horário de expediente, geolocalização de IP incompatível, e User-Agent inconsistentes são sinais clássicos de violação.
+            </p>
+
+            <h2>Principais técnicas utilizadas na perícia</h2>
+
+            <h3>Análise de Memória</h3>
+            <p>
+                A análise de memória RAM (volatile memory) pode conter evidências críticas como processos maliciosos injetados (DLL injection), conexões de rede ativas e artefatos de kernel rootkit. Técnicas incluem aquisição com LiME e análise com Volatility Framework.
+            </p>
+
+            <h3>Análise de Disco</h3>
+            <p>
+                A análise forense de disco (forensic imaging com hashing SHA-256) permite recuperar arquivos apagados via carving, identificar slack space e análise de journaling (ext4, NTFS $LogFile) para reconstruir atividades passadas.
+            </p>
+
+            <div class="article-quote">
+                <i class="fas fa-quote-left"></i>
+                <p>A perícia digital não investiga apenas o crime — investiga o rastro deixado pelo criminoso. E cada rastro, por mais que o invasor tente apagar, sempre deixa vestígios forenses recuperáveis.</p>
+                <span>— Rodrigo A. Paiva, Perito Judicial</span>
+            </div>
+
+            <h2>Cadeia de Custódia da Evidência Digital</h2>
+            <p>
+                Para que a prova seja válida judicialmente (art. 158 do CPP), é essencial manter a integridade e rastreabilidade dos dados, documentando cada transferência de custódia (Chain of Custody form), com lacre físico ou lógico (hash SHA-256), timestamping por ICP-Brasil e controle de acesso restrito.
+            </p>
+
+            <h2>Valor Jurídico da Evidência Recuperada</h2>
+            <p>
+                A documentação correta (laudo pericial conforme art. 159 do CPP) garante que a evidência seja aceita em processos judiciais. O uso de padrões como ISO/IEC 27037 assegura a admissibilidade sob o contraditório (art. 5º, LV, CF).
+            </p>
+
+            <h2>Conclusão</h2>
+            <p>
+                A computação forense permite identificar acessos não autorizados com precisão técnica, fornecendo provas robustas para investigações internas e processos judiciais, desde que respeitados os procedimentos legais de cadeia de custódia e padrões forenses internacionais.
+            </p>
+
+            <div class="article-share">
+                <strong><i class="fas fa-share-alt"></i> Compartilhar este artigo</strong>
+                <div class="share-links">
+                    <a href="#" onclick="shareLinkedIn()" class="share-link"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                    <a href="#" onclick="shareTwitter()" class="share-link"><i class="fab fa-twitter"></i> Twitter</a>
+                    <a href="#" onclick="shareWhatsApp()" class="share-link"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                </div>
+            </div>
+        </div>
+
+        <section class="related-articles">
+            <h3 class="related-title"><i class="fas fa-newspaper"></i> Leia também</h3>
+            <div class="related-grid">
+                <a href="analise-logs.html" class="related-card">
+                    <h4>Análise Forense de Logs</h4>
+                    <p>Como eventos digitais se tornam prova técnica</p>
+                </a>
+                <a href="cadeia-custodia.html" class="related-card">
+                    <h4>Cadeia de Custódia Digital</h4>
+                    <p>Garantia de integridade da prova técnica</p>
+                </a>
+                <a href="fraudes-digitais.html" class="related-card">
+                    <h4>Fraudes Digitais</h4>
+                    <p>Como a perícia identifica manipulações</p>
+                </a>
+            </div>
+        </section>
+    </div>
+</article>
+
+<footer class="footer">
+    <div class="container">
+        <p>© 2026 Rodrigo A. Paiva - Perito Judicial • TJSP</p>
+    </div>
+</footer>
+
+<a href="#" id="backToTop" class="back-to-top"><i class="fas fa-arrow-up"></i> Voltar ao Topo</a>
+
+<script>
+function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('active');
+}
+function shareLinkedIn() {
+    window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}`, '_blank');
+}
+function shareTwitter() {
+    window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.href)}`, '_blank');
+}
+function shareWhatsApp() {
+    window.open(`https://wa.me/?text=${encodeURIComponent(window.location.href)}`, '_blank');
+}
+const backToTop = document.getElementById('backToTop');
+if (backToTop) {
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) backToTop.classList.add('show');
+        else backToTop.classList.remove('show');
+    });
+    backToTop.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}
+</script>
+
+</body>
+</html>

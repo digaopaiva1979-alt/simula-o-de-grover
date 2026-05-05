@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fraudes Digitais: Como a Perícia Técnica Identifica Manipulações</title>
+    <meta name="description" content="Entenda como a perícia técnica identifica fraudes digitais e manipulações em processos judiciais e investigações criminais. Metodologia, técnicas e evidências.">
+    <meta name="author" content="Rodrigo A. Paiva">
+    <link rel="canonical" href="https://rodrigoperito.vercel.app/artigos/fraudes-digitais.html">
+    <meta property="og:title" content="Fraudes Digitais: Como a Perícia Técnica Identifica Manipulações">
+    <meta property="og:description" content="Metodologia pericial para identificação de manipulações em documentos, imagens e transações digitais">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://rodrigoperito.vercel.app/img/preview.jpg">
+    <link rel="stylesheet" href="artigo.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<nav class="nav">
+    <div class="container nav-container">
+        <a href="../index.html" class="nav-logo">RODRIGO A. PAIVA</a>
+        <button class="nav-toggle" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../sobre.html">Sobre</a></li>
+            <li><a href="../servicos.html">Serviços</a></li>
+            <li><a href="../artigos.html" class="active">Artigos</a></li>
+            <li><a href="../contato.html">Contato</a></li>
+        </ul>
+    </div>
+</nav>
+
+<article class="article-page">
+    <div class="container">
+        <div class="article-header">
+            <span class="category-badge"><i class="fas fa-search"></i> Investigação Forense</span>
+            <h1>Fraudes Digitais: Como a Perícia Técnica Identifica Manipulações</h1>
+            <div class="article-meta">
+                <span class="article-date"><i class="far fa-calendar-alt"></i> 11 de Fevereiro, 2026</span>
+                <span class="article-stats"><i class="far fa-clock"></i> 7 min de leitura</span>
+            </div>
+        </div>
+
+        <div class="article-body">
+            <p class="article-intro">
+                As fraudes digitais representam uma das principais ameaças no ambiente corporativo e nas relações pessoais na era digital. A perícia técnica desempenha papel fundamental na identificação de manipulações, reconstituição de eventos criminosos e produção de provas com validade jurídica (arts. 158 e 159 do CPP, art. 369 CPC), contribuindo decisivamente para o combate a esses delitos tipificados no art. 171 (estelionato) e art. 154-A (invasão de dispositivo informático) do Código Penal.
+            </p>
+
+            <h2>O Crescimento das Fraudes Digitais</h2>
+            <p>O avanço tecnológico e a digitalização crescente criaram um ambiente fértil para fraudadores. Dados recentes indicam um aumento exponencial nas tentativas de fraudes digitais:</p>
+            <ul>
+                <li>Mais de 60% das empresas brasileiras já identificaram tentativas de fraude digital nos últimos 12 meses</li>
+                <li>As perdas financeiras decorrentes de fraudes digitais atingem bilhões de reais anualmente</li>
+                <li>A sofisticação dos golpes aumenta progressivamente, exigindo respostas técnicas cada vez mais especializadas</li>
+            </ul>
+
+            <div class="article-quote">
+                <i class="fas fa-quote-left"></i>
+                <p>A fraude digital moderna não deixa pegadas físicas, apenas digitais. Cabe à perícia técnica encontrar essas pegadas — metadados, hashes, timestamps, artefatos de sistema — interpretá-las e transformá-las em prova judicialmente admissível.</p>
+                <span>— Rodrigo A. Paiva, Perito Judicial</span>
+            </div>
+
+            <h2>Principais Tipos de Fraudes Digitais Investigadas</h2>
+
+            <h3>Fraudes Financeiras e Bancárias</h3>
+            <p>As fraudes financeiras digitais incluem: clonagem de cartões (via malware bancário), invasão de contas bancárias (por credenciais vazadas, bypass de MFA), manipulação de TEDs/PIX (alteração de destinatários), e empréstimos fraudulentos em nome de terceiros.</p>
+
+            <h3>Fraudes Corporativas e Empresariais</h3>
+            <p>No ambiente corporativo: manipulação de registros contábeis (via SQL injection), apropriação indébita digital (transferência de ativos), vazamento de dados estratégicos (exfiltração), e fraudes em folha de pagamento (funcionários fantasmas).</p>
+
+            <h3>Falsificação de Documentos Digitais</h3>
+            <p>Contratos adulterados, comprovantes de transação falsificados, laudos técnicos fraudulentos, e documentos de identificação digital manipulados.</p>
+
+            <h3>Phishing e Engenharia Social Avançada</h3>
+            <p>Spear phishing (ataques direcionados), whaling (foco em executivos), Business Email Compromise (interceptação de comunicações executivas), vishing e SMiShing (fraudes por telefone e SMS).</p>
+
+            <h2>Técnicas de Detecção de Manipulações</h2>
+
+            <h3>Análise de Metadados</h3>
+            <p>Os metadados revelam: dados de criação e modificação (MAC timestamps), autor original, software utilizado, dispositivos conectados, coordenadas GPS. Discrepâncias nos metadados são fortes indicadores de falsificação.</p>
+
+            <h3>Verificação de Integridade com Hashing</h3>
+            <p>Algoritmos de hash (SHA-256) geram impressões digitais únicas. Qualquer alteração produz hash completamente diferente. A comparação entre hash original e atual revela modificações não autorizadas.</p>
+
+            <h3>Análise de Timestamps e Correlação Temporal</h3>
+            <p>Logs de sistema registram cada acesso a arquivos. Timestamps inconsistentes revelam edições fraudulentas. A correlação entre diferentes fontes de log valida ou questiona a narrativa apresentada.</p>
+
+            <h3>Análise de Caracteres e Tipografia Forense</h3>
+            <p>Em documentos manipulados: fontes diferentes no mesmo documento, espaçamento irregular entre caracteres, níveis de compressão distintos, camadas sobrepostas identificáveis.</p>
+
+            <h3>Análise de Imagens e Vídeos</h3>
+            <p>Error Level Analysis (ELA), detecção de bordas irregulares, inconsistências na iluminação, duplicação de pixels (clone detection), análise de ruído digital inconsistente.</p>
+
+            <h2>Técnicas Avançadas</h2>
+
+            <h3>Recuperação de Versões Anteriores</h3>
+            <p>Shadow copies (Windows VSS), Time Machine (macOS), e backups automáticos mantêm versões anteriores de arquivos que podem revelar o conteúdo original antes da manipulação.</p>
+
+            <h3>Análise de Logs de Aplicações Específicas</h3>
+            <p>Softwares de edição (Word, Excel, Adobe Acrobat) mantêm logs de alterações, autores e timestamps frequentemente ignorados por fraudadores.</p>
+
+            <h3>Engenharia Reversa de Scripts e Macros</h3>
+            <p>Análise de macros VBA em documentos Office (XLSM, DOCM) pode revelar mecanismos ocultos de manipulação de dados e destruição de evidências.</p>
+
+            <h2>Indicadores Comuns de Manipulação</h2>
+            <ul>
+                <li><strong>Timestamps inconsistentes:</strong> Datas de criação posteriores a datas de modificação</li>
+                <li><strong>Metadados conflitantes:</strong> Autor do sistema diferente do autor declarado</li>
+                <li><strong>Estrutura de arquivo corrompida:</strong> Assinaturas de arquivo inconsistentes</li>
+                <li><strong>Camadas sobrepostas:</strong> Documentos PDF com texto sobreposto ou oculto</li>
+                <li><strong>Fontes não incorporadas:</strong> Uso de fontes que não existiam na data alegada</li>
+                <li><strong>Hash incompatível:</strong> Diferença entre o hash original e o atual</li>
+            </ul>
+
+            <h2>Ferramentas Utilizadas na Perícia</h2>
+            <ul>
+                <li><strong>EnCase, FTK, X-Ways Forensics:</strong> Plataformas completas de análise forense</li>
+                <li><strong>Autopsy/Sleuth Kit:</strong> Ferramentas open-source para análise de discos</li>
+                <li><strong>Amped FIVE, Forensically:</strong> Análise forense de imagens</li>
+                <li><strong>peepdf, PDF Examiner:</strong> Análise de documentos PDF suspeitos</li>
+                <li><strong>OLE Tools:</strong> Análise de documentos Office (.doc, .xls)</li>
+                <li><strong>ExifTool:</strong> Extração de metadados</li>
+            </ul>
+
+            <h2>Admissibilidade da Prova em Juízo</h2>
+            <p>Para que as evidências de fraude digital sejam admitidas judicialmente (art. 369 CPC, art. 158 CPP), o laudo pericial deve demonstrar: metodologia transparente e reprodutível, cadeia de custódia completa (arts. 158-A a 158-F CPP), uso de ferramentas forenses validadas, hashes de integridade, e qualificação técnica do perito.</p>
+
+            <h2>Conclusão</h2>
+            <p>A perícia técnica é instrumento fundamental e insubstituível para o combate às fraudes digitais. Através da aplicação de metodologias rigorosas e ferramentas especializadas, transforma dados técnicos aparentemente ininteligíveis em provas jurídicas robustas. A evolução constante das técnicas fraudulentas exige que o perito digital esteja sempre atualizado.</p>
+
+            <div class="article-share">
+                <strong><i class="fas fa-share-alt"></i> Compartilhar este artigo</strong>
+                <div class="share-links">
+                    <a href="#" onclick="shareLinkedIn()" class="share-link"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                    <a href="#" onclick="shareTwitter()" class="share-link"><i class="fab fa-twitter"></i> Twitter</a>
+                    <a href="#" onclick="shareWhatsApp()" class="share-link"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                </div>
+            </div>
+        </div>
+
+        <section class="related-articles">
+            <h3 class="related-title"><i class="fas fa-newspaper"></i> Leia também</h3>
+            <div class="related-grid">
+                <a href="fraude-crimes-ciberneticos.html" class="related-card">
+                    <h4>Perícia em Crimes Cibernéticos</h4>
+                    <p>Fraude, autoria e materialidade</p>
+                </a>
+                <a href="logs-forense.html" class="related-card">
+                    <h4>Análise Forense de Logs</h4>
+                    <p>Reconstrução de eventos</p>
+                </a>
+                <a href="recuperacao-dados.html" class="related-card">
+                    <h4>Recuperação de Dados</h4>
+                    <p>Limites técnicos e validade jurídica</p>
+                </a>
+            </div>
+        </section>
+    </div>
+</article>
+
+<footer class="footer">
+    <div class="container">
+        <p>© 2026 Rodrigo A. Paiva - Perito Judicial • TJSP</p>
+    </div>
+</footer>
+
+<a href="#" id="backToTop" class="back-to-top"><i class="fas fa-arrow-up"></i> Voltar ao Topo</a>
+
+<script>
+function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('active');
+}
+function shareLinkedIn() {
+    window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}`, '_blank');
+}
+function shareTwitter() {
+    window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.href)}`, '_blank');
+}
+function shareWhatsApp() {
+    window.open(`https://wa.me/?text=${encodeURIComponent(window.location.href)}`, '_blank');
+}
+const backToTop = document.getElementById('backToTop');
+if (backToTop) {
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) backToTop.classList.add('show');
+        else backToTop.classList.remove('show');
+    });
+    backToTop.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}
+</script>
+
+</body>
+</html>
