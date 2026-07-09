@@ -101,16 +101,21 @@ Observações finais
 - Regra geral: a normalização de entrada deve ocorrer UMA ÚNICA VEZ por fluxo de
   execução (ex.: do momento em que o usuário fornece a entrada até a construção
   do circuito).
-- Evitar dupla aplicação: documentar explicitamente que wrappers e exemplos são
-  os pontos autorizados a chamar `normalize_bitstring()`; bibliotecas internas e
-  builders de circuito não devem chamar a normalização.
-- Recomendações para implementação:
-  - Tornar `normalize_bitstring()` idempotente ou prover um parâmetro `assume_raw`
-    para evitar efeitos de segunda aplicação. Ex.: `normalize_bitstring(bitstr,
-    n_qubits, assume_raw=True)`.
-  - Fazer validação estrita: se o comprimento da string não corresponde a
-    `n_qubits`, lançar erro com mensagem orientadora.
-  - Documentar o "fluxo seguro" no `README.md` e em `exemplos/`.
+- Ponto de normalização único: o fluxo de execução deve possuir UM ÚNICO ponto
+  autorizado para normalização; wrappers/CLI/exemplos são responsáveis por
+  essa chamada. Builders e bibliotecas internas NUNCA devem chamar
+  `normalize_bitstring()`.
+- Contrato explícito para `normalize_bitstring()`:
+  - `normalize_bitstring()` aceita somente entradas no formato MSB-left.
+  - A conversão para a convenção Qiskit (LSB-right) ocorre UMA ÚNICA VEZ nos
+    pontos de entrada autorizados.
+  - A função NÃO tentará identificar automaticamente se uma string já foi
+    normalizada; não deve haver detecção automática de estado normalizado.
+  - Evitar dupla conversão por controle arquitetural (pontos de chamada
+    autorizados), não por detecção automática.
+- Validação e erros: a função deve validar o comprimento (`n_qubits`) e os
+  caracteres; em caso de inconsistência, lançar erro com mensagem orientadora.
+- Documentação: explicar o "fluxo seguro" no `README.md` e em `exemplos/`.
 
 3) Utilitário de saída — `format_bitstring_output()`
 
@@ -119,6 +124,13 @@ Observações finais
     para a representação MSB-left usada pela interface do projeto.
   - Contrato UX: as contagens exibidas e os relatórios devem usar MSB-left para
     favorecer legibilidade e consistência com a entrada do usuário.
+  - Garantia de preservação de shots: a transformação deve preservar a soma
+    total dos shots (por ex., sum(counts.values()) permanece igual após a
+    conversão).
+  - Exemplo conceitual (conteúdos, não código):
+    - Entrada `counts` do Qiskit: `{'00': 10, '01': 5}` (LSB-right)
+    - Após `format_bitstring_output(counts, 2)` → `{'00': 10, '10': 5}` (MSB-left)
+    - Total de shots: 15 antes e depois.
   - Implementation note (documentar, não codificar aqui): a função fará a
     transformação de cada chave via `key[::-1]` e preservará os contadores.
   - Local sugerido: `utils/bitstring.py` como parceira de
@@ -126,9 +138,10 @@ Observações finais
 
 4) Plano de testes (adicional ao existente)
 
-- Testes unitários:
-  - `test_normalize_bitstring_idempotence`: garantir que chamadas repetidas
-    não mudem o resultado (ou que a função seja explicitamente idempotente).
+-- Testes unitários:
+  - `test_normalize_bitstring_contract`: garantir que `normalize_bitstring()`
+    exige entradas MSB-left, valida comprimento e caracteres, e lança erro em
+    entradas inválidas.
   - `test_normalize_bitstring_validation`: comprimento e caracteres válidos.
   - `test_format_bitstring_output`: conversão de `get_counts()` preservando
     somas e contagens.
@@ -142,9 +155,11 @@ Observações finais
   - Garantir que exemplos existentes que não usam wrappers explicitamente
     continuem executando (documentar recomendação de atualização dos exemplos).
 
-- CI:
+-- CI:
   - Incluir `tests/run_endianness_tests.py` no workflow do PR (apenas no PR,
     não alterar `main` diretamente).
+  - Incluir atualização do `README.md` e `exemplos/` no mesmo PR para evitar
+    divergência entre código e documentação.
   - Exigir que o PR passe com esses testes antes de aprovação.
 
 5) Segurança da alteração
