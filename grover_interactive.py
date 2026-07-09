@@ -22,6 +22,10 @@ def run_interactive(element: str, shots: int = 1000):
     n_qubits = len(element)
     elemento_normalizado = normalize_bitstring(element, n_qubits=n_qubits)
 
+    # Mostrar conversão para o usuário (entrada é MSB-left, internamente usamos LSB-right)
+    print(f"Entrada (MSB-left): {element}")
+    print(f"Convertido para Qiskit (LSB-right): {elemento_normalizado}")
+
     # Construir e executar circuito (sem alterar lógica interna)
     circuito = ga.criar_grover_2qubits(elemento_normalizado)
     contagens = ga.executar_grover(circuito, shots=shots)
