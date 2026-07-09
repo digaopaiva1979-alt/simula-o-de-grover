@@ -8,16 +8,23 @@ from qiskit import QuantumCircuit, QuantumRegister, ClassicalRegister
 from qiskit_aer import AerSimulator
 from qiskit.visualization import plot_histogram
 import matplotlib.pyplot as plt
-import numpy as np
-from math import sqrt, pi, sin, cos, asin
+from math import sqrt, pi
 
 
 def grover_3qubits(elemento_procurado, num_iteracoes=1):
-    """
-    Implementa Grover com 3 qubits e múltiplas iterações.
-    
-    Para N = 2^n estados, o número ótimo de iterações é aproximadamente:
-    iterações_ótimas ≈ π/4 * sqrt(N)
+    """Cria circuito do Algoritmo de Grover para 3 qubits com várias iterações.
+
+    Parâmetros
+    ---------
+    elemento_procurado : str
+        String binária representando o estado alvo (ex.: '101').
+    num_iteracoes : int
+        Número de iterações de Grover a aplicar.
+
+    Retorna
+    -------
+    QuantumCircuit
+        Circuito quântico configurado e com medições.
     """
     qr = QuantumRegister(3, 'q')
     cr = ClassicalRegister(3, 'c')
@@ -41,8 +48,9 @@ def grover_3qubits(elemento_procurado, num_iteracoes=1):
 
 
 def aplicar_oracle_3qubits(circuito, qr, elemento_procurado):
-    """
-    Oracle para 3 qubits - marca o estado com fase -1.
+    """Aplica o Oracle para 3 qubits que marca o estado alvo com fase -1.
+
+    Observação: preserva a implementação original do oráculo.
     """
     bits = [int(b) for b in elemento_procurado]
     
@@ -61,8 +69,7 @@ def aplicar_oracle_3qubits(circuito, qr, elemento_procurado):
 
 
 def aplicar_difusao_3qubits(circuito, qr):
-    """
-    Operador de difusão para 3 qubits.
+    """Operador de difusão (inversão sobre a média) para 3 qubits.
     """
     # Hadamard em todos
     for qubit in qr:

@@ -9,18 +9,20 @@ from qiskit import QuantumCircuit, QuantumRegister, ClassicalRegister
 from qiskit_aer import AerSimulator
 from qiskit.visualization import plot_histogram, circuit_drawer
 import matplotlib.pyplot as plt
-import numpy as np
 
 
 def criar_grover_2qubits(elemento_procurado):
-    """
-    Implementa o algoritmo de Grover para 2 qubits.
-    
-    Parâmetros:
-    - elemento_procurado: string binária (ex: '11') que representa o elemento a buscar
-    
-    Retorna:
-    - QuantumCircuit: O circuito do algoritmo de Grover
+    """Cria o circuito do Algoritmo de Grover para 2 qubits.
+
+    Parâmetros
+    ---------
+    elemento_procurado : str
+        String binária (ex: '11') que representa o estado alvo.
+
+    Retorna
+    -------
+    QuantumCircuit
+        Circuito quântico pronto para execução/medição.
     """
     
     # Criar registros quânticos
@@ -53,8 +55,9 @@ def criar_grover_2qubits(elemento_procurado):
 
 
 def aplicar_oracle(circuito, qr, elemento_procurado):
-    """
-    Implementa o Oracle que marca o estado procurado com uma fase -1.
+    """Aplica o Oracle que marca o estado alvo com fase -1.
+
+    Observação: não altera a estrutura matemática do oráculo.
     """
     # Converter elemento para lista de bits
     bits = [int(b) for b in elemento_procurado]
@@ -75,8 +78,9 @@ def aplicar_oracle(circuito, qr, elemento_procurado):
 
 
 def aplicar_difusao(circuito, qr):
-    """
-    Implementa o operador de difusão (amplificação de amplitude).
+    """Aplica o operador de difusão (inversão sobre a média).
+
+    Este operador aumenta a amplitude do estado marcado pelo Oracle.
     """
     # Aplicar Hadamard em todos os qubits
     for qubit in qr:
@@ -99,8 +103,19 @@ def aplicar_difusao(circuito, qr):
 
 
 def executar_grover(circuito, shots=1000):
-    """
-    Executa o circuito de Grover no simulador.
+    """Executa o circuito no simulador Aer e retorna as contagens.
+
+    Parâmetros
+    ---------
+    circuito : QuantumCircuit
+        Circuito a ser executado.
+    shots : int
+        Número de execuções (medições).
+
+    Retorna
+    -------
+    dict
+        Contagens por estado (ex.: {'11': 980, '10': 20}).
     """
     # Criar simulador
     simulador = AerSimulator()
@@ -116,8 +131,9 @@ def executar_grover(circuito, shots=1000):
 
 
 def visualizar_resultado(contagens, elemento_procurado):
-    """
-    Visualiza os resultados em um gráfico.
+    """Gera gráficos (histograma e probabilidades) a partir das contagens.
+
+    Os arquivos de saída são salvos em `docs/imagens/`.
     """
     # Criar figura
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 5))
