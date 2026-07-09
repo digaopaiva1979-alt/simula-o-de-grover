@@ -76,6 +76,16 @@ As figuras geradas serão salvas em `docs/imagens/`.
 
 As imagens de exemplo (circuito e resultados) estão em `docs/imagens/`.
 
+Exemplos gerados pelo projeto:
+
+![Circuito de Grover](docs/imagens/circuito.png)
+
+![Resultado da execução](docs/imagens/resultado.png)
+
+![Comparação entre elementos](docs/imagens/comparacao.png)
+
+![Efeito do número de iterações](docs/imagens/iteracoes.png)
+
 ## Estrutura do projeto
 
 ```
