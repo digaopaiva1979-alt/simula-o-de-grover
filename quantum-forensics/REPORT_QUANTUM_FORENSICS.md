@@ -40,3 +40,21 @@ Next steps
   careful testing and potential refactor of quantum builders).
 - Add richer simulation of noise and measurement uncertainty.
 - Provide richer example cases and link to CI smoke tests.
+
+
+-- Updates applied in response to review (high-priority items):
+
+- Added `forensic/quantum_interface.py`: adapter encapsulating Grover build
+  and execution logic so forensic modules no longer import Qiskit or builders
+  directly.
+- Improved `forensic/chain_of_custody.py`:
+  - Added explicit `hash_algo` (SHA-256), `previous_hash`, canonical JSON
+    serialization for deterministic hashing, and stored `record_hash`.
+- Added basic tests under `quantum-forensics/tests/` for chain-of-custody and
+  quantum interface.
+
+Limitations
+
+- The adapter still uses project-specific builders (`grover_algorithm` and
+  `grover_advanced`) internally; a next step would be to extract a generic
+  `quantum_adapter` interface to further decouple implementations.
