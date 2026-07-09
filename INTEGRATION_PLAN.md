@@ -73,3 +73,107 @@ Observações finais
   `investigate/endianness` para revisão.
 - Este documento é um plano de integração — não implementei mudanças no código
   principal neste passo.
+
+-- Novas seções adicionadas abaixo --
+
+1) Contrato de representação de bitstrings
+
+- Convenção de entrada (contrato): todas as interfaces públicas (CLI, exemplos,
+  `grover_interactive.py`) aceitam bitstrings no formato MSB-left. Exemplo: para
+  três qubits, o estado `"101"` corresponde ao MSB 1 à esquerda.
+- Conversão interna: antes de construir circuitos para Qiskit, aplicar
+  `normalize_bitstring(bitstr, n_qubits)` que valida o comprimento e transforma
+  a string para a convenção esperada pelo Qiskit (LSB-right). Internamente isso
+  normalmente equivale a `bitstr[::-1]` após validação, mas a função encapsula
+  o comportamento e validações.
+- Responsabilidades por camada:
+  - Camada de entrada: validação do input, chamada a `normalize_bitstring()` e
+    garantia do contrato (MSB-left). Também é responsável por mensagens de
+    erro claras quando o `n_qubits` não corresponde ao comprimento fornecido.
+  - Camada quântica (processing): funções como `criar_grover_2qubits`,
+    `grover_3qubits` recebem bitstrings já normalizados (LSB-right) e NÃO devem
+    aplicar conversões. Essa camada permanece inalterada logicamente.
+  - Camada de apresentação: responsável por formatar a saída em convenção
+    MSB-left para o usuário final usando `format_bitstring_output()`.
+
+2) Idempotência e controle de fluxo
+
+- Regra geral: a normalização de entrada deve ocorrer UMA ÚNICA VEZ por fluxo de
+  execução (ex.: do momento em que o usuário fornece a entrada até a construção
+  do circuito).
+- Evitar dupla aplicação: documentar explicitamente que wrappers e exemplos são
+  os pontos autorizados a chamar `normalize_bitstring()`; bibliotecas internas e
+  builders de circuito não devem chamar a normalização.
+- Recomendações para implementação:
+  - Tornar `normalize_bitstring()` idempotente ou prover um parâmetro `assume_raw`
+    para evitar efeitos de segunda aplicação. Ex.: `normalize_bitstring(bitstr,
+    n_qubits, assume_raw=True)`.
+  - Fazer validação estrita: se o comprimento da string não corresponde a
+    `n_qubits`, lançar erro com mensagem orientadora.
+  - Documentar o "fluxo seguro" no `README.md` e em `exemplos/`.
+
+3) Utilitário de saída — `format_bitstring_output()`
+
+- Função proposta: `format_bitstring_output(counts: dict, n_qubits: int) -> dict`
+  - Responsabilidade: converter as chaves do `get_counts()` (Qiskit LSB-right)
+    para a representação MSB-left usada pela interface do projeto.
+  - Contrato UX: as contagens exibidas e os relatórios devem usar MSB-left para
+    favorecer legibilidade e consistência com a entrada do usuário.
+  - Implementation note (documentar, não codificar aqui): a função fará a
+    transformação de cada chave via `key[::-1]` e preservará os contadores.
+  - Local sugerido: `utils/bitstring.py` como parceira de
+    `normalize_bitstring()` para manter coesão.
+
+4) Plano de testes (adicional ao existente)
+
+- Testes unitários:
+  - `test_normalize_bitstring_idempotence`: garantir que chamadas repetidas
+    não mudem o resultado (ou que a função seja explicitamente idempotente).
+  - `test_normalize_bitstring_validation`: comprimento e caracteres válidos.
+  - `test_format_bitstring_output`: conversão de `get_counts()` preservando
+    somas e contagens.
+
+- Testes de integração:
+  - Fluxo completo: entrada MSB-left → `normalize_bitstring()` → construir
+    circuito → executar → `format_bitstring_output()` → comparação com target.
+  - Testes para 2-qubits e 3-qubits (já presentes como base na branch).
+
+- Testes de regressão:
+  - Garantir que exemplos existentes que não usam wrappers explicitamente
+    continuem executando (documentar recomendação de atualização dos exemplos).
+
+- CI:
+  - Incluir `tests/run_endianness_tests.py` no workflow do PR (apenas no PR,
+    não alterar `main` diretamente).
+  - Exigir que o PR passe com esses testes antes de aprovação.
+
+5) Segurança da alteração
+
+- Garantia: funções centrais do algoritmo (oráculo, difusor, builders de
+  circuito) permanecem inalteradas. O plano exige revisão obrigatória caso
+  qualquer patch modifique `grover_algorithm.py` ou `grover_advanced.py`.
+- Política proposta:
+  - Commits que alterem `grover_algorithm.py` ou `grover_advanced.py` devem
+    incluir justificativa técnica e revisão dedicada (PR separado se houver
+    mudanças lógicas).
+  - Alterações de normalização devem ser confinadas a wrappers, exemplos e
+    `utils/bitstring.py`.
+
+Seção: Checklist de revisão rápida (pré-merge do PR)
+
+- Verificar que `normalize_bitstring()` é chamado apenas nos pontos autorizados
+  (wrappers/exemplos/CLI/UI).
+- Verificar que `format_bitstring_output()` é usado para apresentar resultados
+  ao usuário final.
+- Confirmar que testes unitários e de integração foram adicionados e passam
+  localmente e no CI do PR.
+- Confirmar que o README e exemplos foram atualizados para explicar o contrato
+  MSB-left.
+
+Conclusão / Parecer
+
+- O plano original já era sólido; as adições aqui clarificam o contrato de
+  bitstrings, garantem idempotência, provêm um utilitário de saída e ampliam a
+  cobertura de testes. Com essas mudanças documentadas, o plano está pronto
+  para implementação. Implementação deve seguir a regra de uma única normalização
+  por fluxo e preservar a camada quântica inalterada.
