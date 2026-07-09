@@ -1,13 +1,13 @@
 """Simple chain of custody representation."""
 from dataclasses import dataclass, field
-from datetime import datetime
+from datetime import datetime, timezone
 import hashlib
 import json
 from typing import List, Dict, Optional
 
 
 def _utc_timestamp() -> str:
-    return datetime.utcnow().replace(microsecond=0).isoformat() + 'Z'
+    return datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace('+00:00', 'Z')
 
 
 @dataclass
@@ -54,6 +54,18 @@ class ChainOfCustodyRecord:
             'events': self.events,
         }
         return json.dumps(payload, separators=(',', ':'), sort_keys=True)
+
+    def to_dict(self) -> Dict[str, object]:
+        return {
+            'evidence_id': self.evidence_id,
+            'created_by': self.created_by,
+            'schema_version': self.schema_version,
+            'hash_algo': self.hash_algo,
+            'previous_hash': self.previous_hash,
+            'created_at': self.created_at,
+            'record_hash': self.record_hash,
+            'events': self.events,
+        }
 
     def finalize(self) -> str:
         """Compute and store the SHA-256 hash of the canonical serialization."""

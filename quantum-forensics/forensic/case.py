@@ -1,11 +1,17 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
+from datetime import datetime, timezone
 from typing import Dict, List, Optional
 
 from .chain_of_custody import ChainOfCustodyRecord
 from .intelligence import build_forensic_timeline, compute_risk_score, correlate_ioc, IocCorrelationResult
 from .models.evidence import Evidence
 from .quantum_interface import simulate_search
+from .storage.sqlite_store import SqliteForensicStore
+
+
+def _utc_timestamp() -> str:
+    return datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace('+00:00', 'Z')
 
 
 @dataclass
@@ -18,6 +24,8 @@ class ForensicCase:
     risk_score: Optional[Dict[str, object]] = None
     chain_of_custody: List[ChainOfCustodyRecord] = field(default_factory=list)
     quantum_result: Optional[Dict[str, object]] = None
+    created_at: str = field(default_factory=_utc_timestamp)
+    updated_at: str = field(default_factory=_utc_timestamp)
 
 
 class ForensicPipeline:
@@ -111,3 +119,45 @@ class ForensicPipeline:
                 report_lines.append(f'  - event_id: {event["event_id"]} action: {event["action"]} timestamp: {event["timestamp_utc"]}')
 
         return '\n'.join(report_lines)
+
+    def save_to_store(self, store: SqliteForensicStore) -> None:
+        """Persist the current case state to a SQLite forensic store."""
+        store.upsert_case(self.case.case_id, self.case.investigator)
+
+        for evidence in self.case.evidences:
+            store.save_evidence(self.case.case_id, evidence)
+
+        for index, event in enumerate(self.case.timeline):
+            event_id = event.get('event_id') or f'{self.case.case_id}-event-{index}'
+            store.save_timeline_event(
+                self.case.case_id,
+                event_id,
+                event.get('timestamp_utc', _utc_timestamp()),
+                event.get('description', ''),
+                event.get('details', {}),
+            )
+
+        if self.case.indicators_found:
+            store.save_ioc_correlation(self.case.case_id, {
+                'hash': self.case.indicators_found.hash,
+                'ip': self.case.indicators_found.ip,
+                'domain': self.case.indicators_found.domain,
+                'matched_signatures': self.case.indicators_found.matched_signatures,
+                'matched_iocs': self.case.indicators_found.matched_iocs,
+                'related_evidence_ids': self.case.indicators_found.related_evidence_ids,
+            })
+
+        if self.case.risk_score:
+            store.save_risk_score(self.case.case_id, self.case.risk_score)
+
+        if self.case.quantum_result:
+            store.save_quantum_result(
+                self.case.case_id,
+                self.case.quantum_result.get('found').id if isinstance(self.case.quantum_result.get('found'), Evidence) else self.case.quantum_result.get('found'),
+                self.case.quantum_result.get('probability', 0.0),
+            )
+
+        for record in self.case.chain_of_custody:
+            store.save_chain_of_custody(record)
+
+        self.case.updated_at = _utc_timestamp()
