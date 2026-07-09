@@ -1,68 +1,59 @@
 # Simula-o-de-Grover
 
-Simulação didática e evolução do algoritmo de Grover para um contexto de pesquisa forense quântica. O projeto combina uma base de computação quântica simulada com uma arquitetura forense progressiva para análise de evidências, relacionamento entre artefatos e exportação de inteligência.
+Simulação didática e evolução do algoritmo de Grover para um contexto de pesquisa forense quântica. O projeto combina computação quântica simulada, modelos forenses e ferramentas de análise investigativa em uma estrutura acadêmica e modular.
 
-## Descrição atual do projeto
+## Visão geral
 
-O projeto começou como um estudo didático sobre o algoritmo de Grover e evoluiu para uma plataforma acadêmica de referência que integra:
+O projeto começou como um estudo didático sobre o algoritmo de Grover e evoluiu para uma plataforma de referência para explorar:
 
 - simulação quântica de busca;
-- modelos forenses para evidências e casos;
+- modelos forenses para casos, evidências e artefatos;
 - persistência em SQLite;
-- grafo investigativo;
-- exportação para JSON e STIX.
+- representação de relações em grafo;
+- exportação de inteligência para JSON e STIX.
 
-Este repositório é um protótipo acadêmico para explorar conceitos de computação quântica aplicada ao contexto forense, sem substituir ferramentas operacionais de investigação.
+Este repositório é um protótipo acadêmico para apoiar o estudo de computação quântica aplicada ao contexto forense, sem substituir ferramentas operacionais de investigação.
 
-## Arquitetura atual
+## Arquitetura do projeto
 
-### Forensic Layer
-
+### Camada forense
 Responsável por representar casos, evidências, artefatos, achados, IOC e eventos de timeline.
 
-### Intelligence Layer
-
+### Camada de inteligência
 Encapsula correlação de IOC, construção de timelines, cálculo de risk score e execução do pipeline forense.
 
-### Quantum Layer
-
+### Camada quântica
 Contém a lógica do algoritmo de Grover, a interface quântica e os backends abstratos usados para simulação.
 
-### Persistence Layer
+### Camada de persistência
+Fornece armazenamento estruturado em SQLite com modelos e repositórios para leitura e gravação de casos e evidências.
 
-Fornece persistência estruturada em SQLite com modelos e repositórios para leitura e gravação de casos e evidências.
-
-### Reporting Layer
-
+### Camada de relatórios
 Gera relatórios, exportações e representações estruturadas para documentação e troca de inteligência.
 
-## Fases da evolução
+## Evolução do projeto
 
 ### Fase 1 — Simulador Grover
-
 - algoritmo de Grover;
 - correção de endianness;
 - normalização de bitstrings.
 
 ### Fase 2 — Arquitetura Forense
-
 - quantum interface;
 - backend abstrato;
 - chain of custody;
 - modelo Evidence.
 
 ### Fase 3 — Inteligência Forense
-
 - IOC correlation;
 - timeline;
 - risk scoring;
 - forensic pipeline.
 
 ### Fase 4 — Plataforma Forense
-
 - gerenciamento de casos;
 - persistência SQLite;
-- modelos Case/Evidence/Artifact/Finding;
+- modelos Case, Evidence, Artifact e Finding;
 - grafo investigativo;
 - exportação JSON/STIX.
 
@@ -98,19 +89,19 @@ pip install -r requirements.txt
 
 ## Execução
 
-- Script principal (2 qubits):
+### Script principal
 
 ```bash
 python3 grover_algorithm.py
 ```
 
-- Exemplos avançados (3 qubits, iterações, comparações):
+### Exemplos avançados
 
 ```bash
 python3 grover_advanced.py
 ```
 
-- Interface leve / placeholder:
+### Interface leve
 
 ```bash
 python3 grover_interactive.py
@@ -145,6 +136,31 @@ simula-o-de-grover/
 └── tests/
 ```
 
+## Sequência de commit e push
+
+### Criar uma branch para a alteração
+
+```bash
+git checkout -b feature/nome-da-feature
+```
+
+### Adicionar, commitar e enviar as mudanças
+
+```bash
+git status
+git add .
+git commit -m "docs: ajusta README"
+git push -u origin feature/nome-da-feature
+```
+
+### Fluxo recorrente para atualizações
+
+```bash
+git add .
+git commit -m "feat: adiciona nova funcionalidade"
+git push
+```
+
 ## Aviso acadêmico
 
 Este projeto é um protótipo acadêmico e de simulação. Ele não substitui soluções forenses comerciais ou infraestruturas operacionais reais.
@@ -163,4 +179,8 @@ Este projeto é um protótipo acadêmico e de simulação. Ele não substitui so
 
 ## Licença
 
-Este projeto está licenciado sob a MIT License — veja o arquivo LICENSE para detalhes.
+Este projeto é destinado a pesquisa, estudo e experimentação acadêmica. Sua finalidade é apoiar a exploração didática e experimental da interseção entre computação quântica e investigação forense, com foco em evolução técnica, documentação e validação conceitual.
+
+A utilização do repositório pode ser feita para fins acadêmicos, de ensino e investigação, desde que haja reconhecimento da autoria e da natureza experimental do material.
+
+Para detalhes sobre os termos de uso, consulte o arquivo LICENSE.
