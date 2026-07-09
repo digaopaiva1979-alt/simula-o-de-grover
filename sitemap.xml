@@ -27,8 +27,8 @@
   <url>
     <loc>https://rodrigoperito.vercel.app/contato.html</loc>
     <lastmod>2026-05-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
   </url>
 
   <url>
@@ -42,84 +42,77 @@
   <url>
     <loc>https://rodrigoperito.vercel.app/artigos/acesso-nao-autorizado.html</loc>
     <lastmod>2026-05-04</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://rodrigoperito.vercel.app/artigos/analise-logs.html</loc>
     <lastmod>2026-05-04</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://rodrigoperito.vercel.app/artigos/cadeia-custodia.html</loc>
     <lastmod>2026-05-04</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://rodrigoperito.vercel.app/artigos/erros-provas-digitais.html</loc>
     <lastmod>2026-05-04</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://rodrigoperito.vercel.app/artigos/evidencia-digital-custodia.html</loc>
     <lastmod>2026-05-04</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://rodrigoperito.vercel.app/artigos/fraude-crimes-ciberneticos.html</loc>
     <lastmod>2026-05-04</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://rodrigoperito.vercel.app/artigos/fraudes-digitais.html</loc>
     <lastmod>2026-05-04</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://rodrigoperito.vercel.app/artigos/logs-forense.html</loc>
     <lastmod>2026-05-04</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://rodrigoperito.vercel.app/artigos/pericia-digital.html</loc>
     <lastmod>2026-05-04</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <url>
-    <loc>https://rodrigoperito.vercel.app/artigos/recuperacao-dados-apagados.html</loc>
-    <lastmod>2026-05-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
+   <url>
     <loc>https://rodrigoperito.vercel.app/artigos/recuperacao-dados.html</loc>
     <lastmod>2026-05-04</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://rodrigoperito.vercel.app/artigos/validade-laudo.html</loc>
     <lastmod>2026-05-04</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
 

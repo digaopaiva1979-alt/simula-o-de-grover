@@ -1,34 +1,10 @@
-# Permite indexação completa do site
 User-agent: *
 Allow: /
 
-# Permite acesso aos assets públicos
-Allow: /style.css
-Allow: /script.js
-Allow: /img/
-
-# Bloqueia apenas se existir
 Disallow: /admin/
 Disallow: /private/
 Disallow: /node_modules/
 Disallow: /.git/
 Disallow: /.env
 
-# Google, Bing, etc. podem renderizar JavaScript
-Allow: /
-
-# Mapa do site
 Sitemap: https://rodrigoperito.vercel.app/sitemap.xml
-
-# Tempo de crawl em segundos
-Crawl-delay: 1
-
-# User-agent específicos para maior permissividade
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Slurp
-Allow: /
