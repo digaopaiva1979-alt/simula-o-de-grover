@@ -150,8 +150,9 @@ def visualizar_resultado(contagens, elemento_procurado):
             ax2.text(i, prob + 0.02, f'{prob:.1%}', ha='center')
     
     plt.tight_layout()
-    plt.savefig('/home/rodrigo/Documentos/Novo Site/grover_resultado.png', dpi=150)
-    print(f"Gráfico salvo em: grover_resultado.png")
+    # Salvar resultado em pasta do projeto (relativo)
+    plt.savefig('docs/imagens/resultado.png', dpi=150)
+    print(f"Gráfico salvo em: docs/imagens/resultado.png")
     plt.close()
 
 
@@ -175,8 +176,8 @@ def main():
     
     # Desenhar circuito
     fig = circuit_drawer(circuito, output='mpl', fold=None)
-    plt.savefig('/home/rodrigo/Documentos/Novo Site/grover_circuito.png', dpi=150, bbox_inches='tight')
-    print("Circuito salvo em: grover_circuito.png\n")
+    plt.savefig('docs/imagens/circuito.png', dpi=150, bbox_inches='tight')
+    print("Circuito salvo em: docs/imagens/circuito.png\n")
     
     # Executar algoritmo
     print("="*60)

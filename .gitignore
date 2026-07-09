@@ -69,3 +69,13 @@ venv/
 dist/
 build/
 *.egg-info/
+
+# Virtual env
+.venv/
+
+# Byte-compiled
+**/__pycache__/**
+*.pyc
+
+# IDEs
+.idea/

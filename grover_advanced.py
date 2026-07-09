@@ -128,8 +128,8 @@ def analisar_numero_iteracoes():
     ax.legend()
     
     plt.tight_layout()
-    plt.savefig('/home/rodrigo/Documentos/Novo Site/grover_iteracoes.png', dpi=150)
-    print("\nGráfico salvo em: grover_iteracoes.png")
+    plt.savefig('docs/imagens/iteracoes.png', dpi=150)
+    print("\nGráfico salvo em: docs/imagens/iteracoes.png")
     plt.close()
 
 
@@ -181,8 +181,8 @@ def comparar_elementos():
         print()
     
     plt.tight_layout()
-    plt.savefig('/home/rodrigo/Documentos/Novo Site/grover_comparacao.png', dpi=150)
-    print("Gráfico salvo em: grover_comparacao.png\n")
+    plt.savefig('docs/imagens/comparacao.png', dpi=150)
+    print("Gráfico salvo em: docs/imagens/comparacao.png\n")
     plt.close()
 
 
