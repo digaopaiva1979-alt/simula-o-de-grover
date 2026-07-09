@@ -5,6 +5,15 @@
 ![Quantum Computing](https://img.shields.io/badge/domain-quantum%20computing-purple)
 ![Digital Forensics](https://img.shields.io/badge/domain-digital%20forensics-red)
 
+# Quantum Forensics Simulator
+
+<p align="left">
+<img src="https://img.shields.io/badge/status-experimental-blue" />
+<img src="https://img.shields.io/badge/python-3.8%2B-green" />
+<img src="https://img.shields.io/badge/domain-quantum%20computing-purple" />
+<img src="https://img.shields.io/badge/domain-digital%20forensics-red" />
+</p>
+
 ## Sobre o projeto
 
 O **Quantum Forensics Simulator** é um projeto experimental que explora a integração entre:
