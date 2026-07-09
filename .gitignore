@@ -57,3 +57,15 @@ pnpm-debug.log*
 # Local development
 local.env
 .env.local
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.env
+.vscode/
+.ipynb_checkpoints/
+dist/
+build/
+*.egg-info/
