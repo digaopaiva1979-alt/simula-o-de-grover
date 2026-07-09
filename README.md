@@ -72,6 +72,16 @@ python3 grover_interactive.py
 
 As figuras geradas serão salvas em `docs/imagens/`.
 
+Observação sobre entradas de bitstrings
+
+- Convenção do projeto: todas as interfaces públicas aceitam bitstrings no
+	formato MSB-left (mais significativo à esquerda). Ex.: para 2 qubits, use
+	`00`, `01`, `10` ou `11`.
+- Internamente, antes de construir circuitos, as entradas são convertidas para
+	a convenção do Qiskit (LSB-right). Esta conversão é aplicada UMA ÚNICA VEZ
+	nos pontos de entrada (wrappers/CLI/exemplos). O usuário NÃO precisa enviar
+	entradas no formato do Qiskit.
+
 ## Exemplos de saída
 
 As imagens de exemplo (circuito e resultados) estão em `docs/imagens/`.

@@ -23,3 +23,10 @@ python3 grover_advanced.py
 Observações:
 - As imagens geradas são salvas em `docs/imagens/`.
 - Para executar os scripts é necessário ter o Qiskit instalado.
+
+Nota sobre entradas de bitstrings
+
+- As interfaces públicas (CLI, `grover_interactive.py` e exemplos) aceitam
+	bitstrings no formato MSB-left (ex.: `01`, `101`). Essas entradas serão
+	convertidas automaticamente para a convenção do Qiskit (LSB-right) UMA
+	ÚNICA VEZ pelos wrappers antes da construção do circuito.
