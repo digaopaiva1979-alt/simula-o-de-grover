@@ -1,49 +1,51 @@
 # Quantum Forensics Simulator
 
-Projeto experimental que explora a integração entre **Computação Quântica**, **Algoritmo de Grover** e **Perícia Digital Computacional**.
+![Status](https://img.shields.io/badge/status-experimental-blue)
+![Python](https://img.shields.io/badge/python-3.8%2B-green)
+![Quantum Computing](https://img.shields.io/badge/domain-quantum%20computing-purple)
+![Digital Forensics](https://img.shields.io/badge/domain-digital%20forensics-red)
 
-O projeto iniciou como um simulador acadêmico do algoritmo de Grover e evoluiu para uma arquitetura experimental voltada à investigação digital, incorporando conceitos de:
+## Sobre o projeto
 
-- Busca quântica simulada;
-- Análise de evidências digitais;
-- Cadeia de custódia;
-- Threat Intelligence;
-- Correlação de indicadores de comprometimento (IOC);
-- Linha do tempo investigativa;
-- Pontuação de risco;
-- Persistência de casos;
-- Grafos de relacionamento;
-- Exportação estruturada de dados.
+O **Quantum Forensics Simulator** é um projeto experimental que explora a integração entre:
 
-> **Observação:** este projeto possui finalidade acadêmica e experimental. Não representa uma ferramenta pericial certificada e não substitui metodologias, normas ou softwares utilizados em investigações digitais reais.
+- Computação Quântica;
+- Algoritmo de Grover;
+- Perícia Digital Computacional;
+- Cyber Threat Intelligence;
+- Análise automatizada de evidências.
+
+O projeto iniciou como um simulador acadêmico do algoritmo de Grover e evoluiu para uma arquitetura experimental de investigação digital, incorporando conceitos utilizados em ambientes de pesquisa em segurança cibernética e computação forense.
+
+> Este projeto possui finalidade acadêmica e experimental. Não representa uma ferramenta pericial certificada e não substitui metodologias, normas técnicas ou softwares profissionais utilizados em investigações digitais reais.
 
 ---
 
-# Arquitetura do Projeto
+# Visão Geral da Arquitetura
 
-A arquitetura foi organizada em camadas independentes:
+A plataforma foi organizada em camadas independentes:
 
 
-┌─────────────────────────────────────┐
+┌──────────────────────────────────────┐
 │ Investigation Platform │
 │ Cases | Storage | Reports | Export │
-└─────────────────────────────────────┘
+└──────────────────────────────────────┘
 │
-┌─────────────────────────────────────┐
+┌──────────────────────────────────────┐
 │ Forensic Intelligence │
 │ IOC | Timeline | Risk Analysis │
-└─────────────────────────────────────┘
+└──────────────────────────────────────┘
 │
-┌─────────────────────────────────────┐
+┌──────────────────────────────────────┐
 │ Quantum Forensics │
 │ Evidence | Artifact | Findings │
 │ Chain of Custody │
-└─────────────────────────────────────┘
+└──────────────────────────────────────┘
 │
-┌─────────────────────────────────────┐
+┌──────────────────────────────────────┐
 │ Quantum Core │
 │ Grover Algorithm | Simulation │
-└─────────────────────────────────────┘
+└──────────────────────────────────────┘
 
 
 ---
@@ -52,85 +54,94 @@ A arquitetura foi organizada em camadas independentes:
 
 Camada responsável pela simulação dos algoritmos quânticos.
 
-Principais componentes:
+## Componentes principais
 
 ### Grover Algorithm
 
-Implementação do algoritmo de busca quântica de Grover.
+Implementação experimental do algoritmo de busca quântica de Grover.
 
-Arquivos principais:
+Arquivos:
 
-- `grover_algorithm.py`
-- `grover_advanced.py`
-- `grover_interactive.py`
+
+grover_algorithm.py
+grover_advanced.py
+grover_interactive.py
+
 
 Recursos:
 
 - Construção de circuitos;
 - Simulação de busca quântica;
 - Manipulação de estados;
-- Tratamento de convenções de bitstrings.
+- Tratamento de bitstrings;
+- Conversão de convenções MSB/LSB.
 
 ---
 
 # Quantum Forensics Layer
 
-Camada responsável pela representação e análise de evidências digitais.
+Camada responsável pela representação de evidências digitais.
 
-## Evidence
+## Evidence Model
 
-Modelo de evidência contendo:
+Modelo estruturado contendo:
 
-- Identificação;
+- Identificação da evidência;
 - Hash SHA-256;
 - Origem;
 - Metadados;
 - Informações de coleta.
 
-## Artifact
+---
 
-Representação dos artefatos encontrados durante uma investigação:
+## Artifact Management
+
+Representação de artefatos encontrados durante uma investigação.
 
 Exemplos:
 
 - Arquivos;
-- Hashes;
 - Registros;
+- Hashes;
 - Indicadores técnicos.
 
-## IOC
+---
 
-Indicadores de comprometimento:
+## IOC Management
 
-- Hashes;
+Representação de indicadores de comprometimento:
+
+- Hashes maliciosos;
 - Endereços IP;
 - Domínios;
 - Assinaturas.
+
+---
 
 ## Chain of Custody
 
 Implementação experimental de cadeia de custódia digital contendo:
 
 - SHA-256;
-- Versionamento de schema;
 - Timestamp UTC;
-- Encadeamento de registros;
-- Integridade dos eventos.
+- Versionamento de schema;
+- Encadeamento de eventos;
+- Controle de integridade.
 
 ---
 
 # Forensic Intelligence
 
-Camada de análise investigativa.
+Camada responsável pela análise investigativa.
 
 ## IOC Correlation
 
-Realiza correlação entre:
+Correlação entre:
 
 - Evidências;
 - Indicadores;
-- Hashes;
-- Infraestrutura relacionada.
+- Infraestrutura relacionada;
+- Eventos suspeitos.
 
 ---
 
@@ -140,21 +151,25 @@ Construção de linha temporal investigativa:
 
 
 Coleta da evidência
-↓
+│
+▼
 Cálculo do hash
-↓
+│
+▼
 Análise IOC
-↓
-Busca experimental com Grover
-↓
-Registro da cadeia de custódia
+│
+▼
+Busca experimental Grover
+│
+▼
+Registro na cadeia de custódia
 
 
 ---
 
 ## Risk Scoring
 
-Modelo experimental de avaliação de risco considerando:
+Modelo experimental de classificação de risco baseado em:
 
 - Hash associado a malware;
 - IOC relacionado;
@@ -174,7 +189,10 @@ Gerenciamento de casos contendo:
 - Evidências;
 - Artefatos;
 - Achados;
-- Eventos.
+- Eventos;
+- Relacionamentos.
+
+---
 
 ## Storage
 
@@ -184,37 +202,41 @@ Persistência utilizando SQLite:
 - Repositórios;
 - Histórico investigativo.
 
+---
+
 ## Relationship Graph
 
-Modelo de relacionamento entre entidades:
+Modelo experimental de relacionamento:
 
 
-Evidência
-|
-|
+Evidence
+│
+▼
 Hash
-|
-|
+│
+▼
 Malware
-|
-|
-Domínio / IP
+│
+▼
+Domain / IP
 
 
-Permite visualizar conexões entre diferentes elementos da investigação.
+Objetivo:
+
+Visualizar conexões entre entidades relacionadas a uma investigação.
 
 ---
 
-# Exportação de Dados
+# Exportação
 
-Formatos experimentais:
+Formatos suportados:
 
 - JSON;
 - STIX 2.1.
 
 Objetivo:
 
-Facilitar integração futura com plataformas de Threat Intelligence.
+Permitir futura integração com plataformas de Threat Intelligence.
 
 ---
 
@@ -247,59 +269,77 @@ Facilitar integração futura com plataformas de Threat Intelligence.
 
 # Instalação
 
-Requisitos:
+## Requisitos
 
 - Python 3.8+
-- Bibliotecas definidas em `requirements.txt`
+- Dependências definidas em:
+
+
+requirements.txt
+
 
 Instalação:
 
 ```bash
 pip install -r requirements.txt
 Execução
-
-Executar simulador de Grover:
-
+Simulador de Grover
 python grover_interactive.py
-
-Executar exemplo de investigação:
-
+Exemplo de investigação completa
 PYTHONPATH=.:quantum-forensics python examples/complete_investigation.py
-
-Executar testes:
-
+Testes
 pytest
 Evolução do Projeto
 Fase 1 — Quantum Simulation
-Implementação do algoritmo de Grover;
-Simulação de circuitos;
-Tratamento de estados quânticos.
-Fase 2 — Quantum Forensics
-Camada de evidências;
-Cadeia de custódia;
-Modelos forenses.
-Fase 3 — Forensic Intelligence
-Correlação IOC;
-Timeline;
-Risk scoring;
-Pipeline investigativo.
-Fase 4 — Investigation Platform
-Casos;
-Persistência;
-Grafos;
-Exportação estruturada.
-Objetivo
 
-Investigar como conceitos de Computação Quântica podem ser explorados em conjunto com técnicas de Forense Digital e Cyber Threat Intelligence.
+Implementado:
+
+Algoritmo de Grover;
+Simulação de circuitos;
+Manipulação de estados quânticos.
+Fase 2 — Quantum Forensics
+
+Implementado:
+
+Modelo de evidências;
+Cadeia de custódia;
+Hashing;
+Representação forense.
+Fase 3 — Forensic Intelligence
+
+Implementado:
+
+Correlação IOC;
+Linha temporal investigativa;
+Risk scoring;
+Pipeline forense.
+Fase 4 — Investigation Platform
+
+Implementado:
+
+Gerenciamento de casos;
+Persistência SQLite;
+Grafos de relacionamento;
+Exportação JSON/STIX.
+Objetivo da Pesquisa
+
+Investigar como conceitos de Computação Quântica podem ser aplicados experimentalmente em conjunto com:
+
+Forense Digital;
+Cyber Threat Intelligence;
+Análise automatizada de evidências;
+Investigação computacional.
 
 O projeto busca criar uma ponte experimental entre:
 
-Computação Quântica;
-Segurança Cibernética;
-Investigação Digital;
-Análise automatizada de evidências.
+Computação Quântica
+        +
+Segurança Cibernética
+        +
+Perícia Digital
+        +
+Inteligência Artificial
 Status
-
 Quantum Forensics Simulator v0.4
 
 Implementado:
