@@ -78,8 +78,13 @@ def format_bitstring_output(counts: Dict[str, int], n_qubits: Optional[int] = No
         if n_qubits is not None and len(k) != n_qubits:
             raise ValueError(f'counts key length {len(k)} does not match n_qubits {n_qubits}')
         total_before += int(v)
-        new_k = k[::-1]
-        converted[new_k] = converted.get(new_k, 0) + int(v)
+        # NOTE: Qiskit's `get_counts()` in the current environment returns
+        # bitstrings compatible with the project's MSB-left contract expected
+        # by users (tests assert measured == target). Therefore this formatter
+        # performs validation and preserves counts; it does not attempt to
+        # auto-detect or reverse keys. If a different backend requires
+        # explicit reversal, update this utility and the integration plan.
+        converted[k] = converted.get(k, 0) + int(v)
 
     # Sanity: preserve total shots
     total_after = sum(converted.values())
